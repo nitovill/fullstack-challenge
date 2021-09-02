@@ -1,4 +1,4 @@
-import MessageList from "./components/MessageList";
+import MessageList from "./components/MessageList.jsx";
 const App = () => {
   return (
     <>

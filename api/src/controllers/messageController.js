@@ -6,11 +6,11 @@ function getMessages(req, res) {
   const message = faker.lorem.sentence();
   switch (typeErrorMessage) {
     case 1:
-      return res.status(404).send("mariano");
+      return res.status(404).json({ error: "404" });
     case 2:
-      return res.status(500).send("nelson");
+      return res.status(500).json({ error: "500" });
     case 3:
-      return res.status(503).send("villafuerte");
+      return res.status(503).json({ error: "503" });
     default:
       return res.json({ message, priority });
   }
