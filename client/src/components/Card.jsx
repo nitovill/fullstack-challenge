@@ -15,7 +15,12 @@ function CardMessage({ message, deleteMessage }) {
   return (
     <div className={clase}>
       <p>{message.message}</p>
-      <button onClick={() => deleteMessage(message)}>Delete</button>
+      <button
+        style={{ background: "transparent", borderStyle: "hidden" }}
+        onClick={() => deleteMessage(message)}
+      >
+        Clear
+      </button>
     </div>
   );
 }
