@@ -2,7 +2,7 @@ const random = require("lodash/random");
 const faker = require("faker");
 function getMessages(req, res) {
   const priority = random(1, 3);
-  const typeErrorMessage = random(1, 12);
+  const typeErrorMessage = random(1, 17);
   const message = faker.lorem.sentence();
   switch (typeErrorMessage) {
     case 1:

@@ -2,26 +2,31 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import random from "lodash/random";
 import { getMessage, cleanMessages } from "../actions";
-import { Grid, Button, Snackbar } from "@material-ui/core";
+import { Grid, Button } from "@material-ui/core";
 import Card from "./Card";
+import Snackbar from "./Snackbar.jsx";
 
-import MuiAlert from "@material-ui/lab/Alert";
-
-const MessageList = ({ messages, getMessage, clearMessages }) => {
+const MessageList = ({ messages, getMessage, clearMessages, actual }) => {
   const [start, setStart] = useState(true);
-  const mandar = () => {
-    getMessage();
-  };
+  const [open, setOpen] = React.useState(false);
+
   useEffect(() => {
     const nextInMS = random(500, 3000);
+    setOpen(false);
+    console.log(open);
+    if (actual && actual.priority === 1) {
+      setOpen(true);
+      console.log(open);
+    }
     setTimeout(() => {
       if (start) {
-        mandar();
+        getMessage();
       }
     }, nextInMS);
-  }, [start, messages]);
+  }, [start, actual]);
   return (
     <>
+      {open && <Snackbar message={actual} />}
       <Button variant="contained" onClick={() => setStart(!start)}>
         {start ? "Stop Messages" : "Start Messages"}
       </Button>
@@ -66,6 +71,7 @@ const MessageList = ({ messages, getMessage, clearMessages }) => {
 function mapStateToProps(state) {
   return {
     messages: state.messages,
+    actual: state.actual,
   };
 }
 function mapDispatchToProps(dispatch) {

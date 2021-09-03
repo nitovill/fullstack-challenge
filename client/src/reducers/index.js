@@ -4,13 +4,14 @@ const {
   DELETE_MESSAGE,
 } = require("../actiontypes");
 const initialState = {
+  actual: [],
   messages: [],
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_MESSAGE:
       return {
-        ...state,
+        actual: action.payload,
         messages: [action.payload, ...state.messages],
       };
     case CLEAN_MESSAGES:
