@@ -1,9 +1,18 @@
 .error {
   background-color: #f56236;
+  margin: 8px;
+  border-radius: 14px;
+  padding: 15px;
 }
 .info {
   background-color: #88fca3;
+  margin: 8px;
+  border-radius: 14px;
+  padding: 15px;
 }
 .warning {
   background-color: #fce788;
+  margin: 8px;
+  border-radius: 14px;
+  padding: 15px;
 }

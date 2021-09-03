@@ -10,6 +10,8 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({
   botones: {
     backgroundColor: "#88FCA3",
+    padding: "inherit",
+    margin: "10px",
   },
 });
 
@@ -21,10 +23,8 @@ const MessageList = ({ messages, getMessage, clearMessages, actual }) => {
   useEffect(() => {
     const nextInMS = random(500, 3000);
     setOpen(false);
-    console.log(open);
     if (actual && actual.priority === 1) {
       setOpen(true);
-      console.log(open);
     }
     setTimeout(() => {
       if (start) {
@@ -37,20 +37,28 @@ const MessageList = ({ messages, getMessage, clearMessages, actual }) => {
       <h1>Coding Challenge</h1>
       <hr></hr>
       {open && <Snackbar message={actual} />}
-      <Button
-        className={classes.botones}
-        variant="contained"
-        onClick={() => setStart(!start)}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
-        {start ? "Stop" : "Start"}
-      </Button>
-      <Button
-        className={classes.botones}
-        variant="contained"
-        onClick={() => clearMessages()}
-      >
-        Clear
-      </Button>
+        <Button
+          className={classes.botones}
+          variant="contained"
+          onClick={() => setStart(!start)}
+        >
+          {start ? "Stop" : "Start"}
+        </Button>
+        <Button
+          className={classes.botones}
+          variant="contained"
+          onClick={() => clearMessages()}
+        >
+          Clear
+        </Button>
+      </div>
       <Grid
         container
         direction="row"
