@@ -5,10 +5,18 @@ import { getMessage, cleanMessages } from "../actions";
 import { Grid, Button } from "@material-ui/core";
 import Card from "./Card";
 import Snackbar from "./Snackbar.jsx";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  botones: {
+    backgroundColor: "#88FCA3",
+  },
+});
 
 const MessageList = ({ messages, getMessage, clearMessages, actual }) => {
   const [start, setStart] = useState(true);
   const [open, setOpen] = React.useState(false);
+  const classes = useStyles();
 
   useEffect(() => {
     const nextInMS = random(500, 3000);
@@ -26,12 +34,22 @@ const MessageList = ({ messages, getMessage, clearMessages, actual }) => {
   }, [start, actual]);
   return (
     <>
+      <h1>Coding Challenge</h1>
+      <hr></hr>
       {open && <Snackbar message={actual} />}
-      <Button variant="contained" onClick={() => setStart(!start)}>
-        {start ? "Stop Messages" : "Start Messages"}
+      <Button
+        className={classes.botones}
+        variant="contained"
+        onClick={() => setStart(!start)}
+      >
+        {start ? "Stop" : "Start"}
       </Button>
-      <Button variant="contained" onClick={() => clearMessages()}>
-        clear
+      <Button
+        className={classes.botones}
+        variant="contained"
+        onClick={() => clearMessages()}
+      >
+        Clear
       </Button>
       <Grid
         container
