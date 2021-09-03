@@ -1,0 +1,9 @@
+.error {
+  background-color: #f56236;
+}
+.info {
+  background-color: #88fca3;
+}
+.warning {
+  background-color: #fce788;
+}

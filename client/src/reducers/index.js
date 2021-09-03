@@ -1,6 +1,9 @@
-const { GET_MESSAGE } = require("../actiontypes");
+const {
+  GET_MESSAGE,
+  CLEAN_MESSAGES,
+  DELETE_MESSAGE,
+} = require("../actiontypes");
 const initialState = {
-  message: [],
   messages: [],
 };
 const rootReducer = (state = initialState, action) => {
@@ -8,7 +11,22 @@ const rootReducer = (state = initialState, action) => {
     case GET_MESSAGE:
       return {
         ...state,
-        message: action.payload,
+        messages: [action.payload, ...state.messages],
+      };
+    case CLEAN_MESSAGES:
+      return {
+        ...state,
+        messages: [],
+      };
+    case DELETE_MESSAGE:
+      return {
+        ...state,
+        messages: state.messages.filter((mes) => {
+          return (
+            mes.message !== action.payload.message ||
+            mes.priority !== action.payload.priority
+          );
+        }),
       };
     default:
       return state;
