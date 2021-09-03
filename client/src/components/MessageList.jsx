@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import random from "lodash/random";
 import { getMessage, cleanMessages } from "../actions";
-import { Grid, Button } from "@material-ui/core";
+import { Grid, Button, Snackbar } from "@material-ui/core";
 import Card from "./Card";
+
+import MuiAlert from "@material-ui/lab/Alert";
 
 const MessageList = ({ messages, getMessage, clearMessages }) => {
   const [start, setStart] = useState(true);

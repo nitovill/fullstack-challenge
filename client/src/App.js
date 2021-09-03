@@ -1,8 +1,9 @@
 import MessageList from "./components/MessageList.jsx";
+import Nose from "./components/Nose";
 const App = () => {
   return (
     <>
-      <MessageList />
+      <Nose />
     </>
   );
 };
